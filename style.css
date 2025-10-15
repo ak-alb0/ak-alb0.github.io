@@ -5,17 +5,23 @@
     box-sizing: border-box;
 }
 
+i {
+    cursor: pointer;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
 /********** Navbar **********/
 
 header {
     padding: 20px;
     background-color: white;
     position: fixed;
-    top: 0;
-    left: 0;
     width: 100%;
     z-index: 100;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
 nav {
@@ -32,6 +38,13 @@ nav {
     flex-direction: row;
     align-items: center;
     gap: 25px;
+}
+
+.logo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
 }
 
 .nav h2 {
@@ -58,13 +71,13 @@ nav {
 }
 
 .nav ul li a:hover {
-    color: #ff4d4d;
+  color: gray;
 }
 
 .nav2 {
     display: flex;
     flex-direction: row;
-    gap: 20px;
+    gap: 30px;
     align-items: center;
 }
 
@@ -76,187 +89,211 @@ nav {
 }
 
 .nav2 input[type="search"] {
-    padding: 6px 10px;
-    border: 1px solid #ccc;
-    border-radius: 20px;
+    border: none;
+    border-radius: none;
     outline: none;
+    background-color: transparent;
 }
 
+.rechercher {
+    background-color: white;
+}
+.rechercher:hover {
+    background-color: #e5e5e5;
+    border-radius: 99px;
+}
+.ri-search-line {
+    background-color: white;
+    border-radius: 99px;
+}
+.ri-search-line:hover {
+    background-color: #CACACB;
+}
 
+.nav2 i {
+    padding: 10px;
+}
+
+.nav2 i:hover{
+    border-radius: 99px;
+    background-color: #e5e5e5;
+}
 
 /********** Carrousel Section **********/
 
 .carousel {
-    position: relative;
-    width: 100%;
-    height: 90vh;
-    overflow: hidden;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
 }
 
 .slides {
-    display: none;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
+  display: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
 }
 
 .slides.active {
-    display: block;
+  display: block;
 }
 
 .slides img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    filter: brightness(90%);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(90%);
 }
 
 .content {
-    position: absolute;
-    top: 50%;
-    left: 10%;
-    transform: translateY(-50%);
-    color: white;
-    max-width: 500px;
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  transform: translateY(-50%);
+  color: white;
+  max-width: 600px;
 }
 
 .tag {
-    display: inline-block;
-    background-color: white;
-    color: black;
-    padding: 5px 15px;
-    border-radius: 20px;
-    margin-bottom: 15px;
-    font-weight: bold;
+  display: inline-block;
+  background-color: white;
+  color: black;
+  padding: 5px 15px;
+  border-radius: 20px;
+  margin-bottom: 15px;
+  font-weight: bold;
 }
 
 .tag.halloween {
-    background-color: #ff6a00;
-    color: white;
+  background-color: #ff6a00;
+  color: white;
 }
 
 .content h1 {
-    font-size: 3rem;
-    margin-bottom: 15px;
+  font-size: 4rem;
+  margin-bottom: 15px;
 }
 
 .content p {
-    font-size: 1.1rem;
-    margin-bottom: 20px;
+  font-size: 1.1rem;
+  margin-bottom: 20px;
 }
 
 .price {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 25px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 25px;
 }
 
 .price h2 {
-    font-size: 2rem;
-    color: white;
+  font-size: 2rem;
+  color: white;
 }
 
 .price .old {
-    text-decoration: line-through;
-    color: #ccc;
+  text-decoration: line-through;
+  color: #ccc;
 }
 
 .price .discount {
-    background-color: red;
-    color: white;
-    padding: 5px 10px;
-    border-radius: 10px;
-    font-size: 0.9rem;
+  background-color: red;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 10px;
+  font-size: 0.9rem;
 }
 
 .buttons {
-    display: flex;
-    gap: 15px;
+  display: flex;
+  gap: 15px;
 }
 
 .buttons .shop,
 .buttons .explore {
-    padding: 12px 20px;
-    border: none;
-    border-radius: 30px;
-    font-weight: bold;
-    cursor: pointer;
-    font-size: 1rem;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 1rem;
 }
 
 .buttons .shop {
-    background-color: white;
-    color: black;
+  background-color: white;
+  color: black;
+  transition: 0.7s ease;
 }
 .shop:hover {
-    background-color: rgb(29, 19, 77);
-    color: white;
+  background-color: rgb(29, 19, 77);
+  color: white;
 }
 
 .buttons .explore {
-    background-color: transparent;
-    border: 2px solid white;
-    color: white;
+  background-color: transparent;
+  border: 2px solid white;
+  color: white;
 }
 
 /* Navigation buttons */
 
 .carousel-nav {
-    position: absolute;
-    top: 50%;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    transform: translateY(-50%);
-    padding: 0 20px;
-    z-index: 2;
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+  padding: 0 20px;
+  z-index: 2;
 }
 
 .carousel-nav button {
-    background-color: rgba(255,255,255,0.7);
-    border: none;
-    width: 50px; /* ✅ Taille fixe */
-    height: 50px; /* ✅ Taille fixe */
-    font-size: 1.8rem;
-    cursor: pointer;
-    border-radius: 50%; /* ✅ Cercle parfait */
-    transition: background 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  background-color: rgba(255, 255, 255, 0.7);
+  border: none;
+  width: 50px; /* ✅ Taille fixe */
+  height: 50px; /* ✅ Taille fixe */
+  font-size: 1.8rem;
+  cursor: pointer;
+  border-radius: 50%; /* ✅ Cercle parfait */
+  transition: background 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .carousel-nav button:hover {
-    background-color: white;
+  background-color: white;
 }
 
 .explore:hover {
-    background-color: white;
-    color: black;
-    transition: 0.7s ease;
+  background-color: white;
+  color: black;
+  transition: 0.7s ease;
 }
 
+/* Media query for responsiveness */
 @media (max-width: 768px) {
-    .carousel {
-        height: 100vh; /* S’assurer que l'image reste fullscreen */
-    }
+  .carousel {
+    height: 100vh; /* Ensure full screen height on smaller devices */
+  }
 
-    .slides img {
-        object-position: center center; /* Centrer l'image peu importe l’écran */
-    }
+  .slides img {
+    object-position: center center; /* Keep the image centered */
+  }
 
-    .content {
-        top: 55%;
-        transform: translateY(-55%);
-        padding: 0 10px;
-    }
+  .content {
+    top: 55%;
+    transform: translateY(-55%);
+    padding: 0 10px;
+  }
 }
 
 @media (max-width: 480px) {
-    .slides img {
-        object-position: center top; /* Pour éviter de couper trop le bas sur très petits écrans */
-    }
+  .slides img {
+    object-position: center top; /* Adjust the position for small screens */
+  }
 }
