@@ -32,11 +32,12 @@
 // partie recherche
 
 
-const searchInput = document.querySelector('.nav2 input[type="search"]');
+// Partie recherche
+const searchTrigger = document.querySelector('.rechercher');
 const searchOverlay = document.getElementById('searchOverlay');
 const closeSearch = document.getElementById('closeSearch');
 
-searchInput.addEventListener('focus', () => {
+searchTrigger.addEventListener('click', () => {
   searchOverlay.style.display = 'flex';
   searchOverlay.classList.add('show');
   document.querySelector('.search-input-focus').focus();
