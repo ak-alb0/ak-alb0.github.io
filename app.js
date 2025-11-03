@@ -64,7 +64,6 @@ fullscreenMenu.innerHTML = `
     <li><a href="#">New Arrivals</a></li>
     <li><a href="#">Men</a></li>
     <li><a href="#">Women</a></li>
-    <li><a href="#">Accessories</a></li>
   </ul>
 `;
 document.body.appendChild(fullscreenMenu);

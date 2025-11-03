@@ -57,18 +57,18 @@ nav {
   font-size: 22px;
 }
 
-.nav ul {
+.nav1 ul {
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 20px;
 }
 
-.nav ul li {
+.nav1 ul li {
   list-style: none;
 }
 
-.nav ul li a {
+.nav1 ul li a {
   text-decoration: none;
   color: black;
   font-weight: 500;
@@ -76,49 +76,20 @@ nav {
   transition: color 0.3s ease;
 }
 
-.nav ul li a:hover {
+.nav1 ul li a:hover {
   color: gray;
-}
-
-.nav2 {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-.nav2 label {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 10px;
-}
-
-.nav2 input[type="search"] {
-  border: none;
-  border-radius: none;
-  outline: none;
-  background-color: transparent;
-}
-
-.rechercher {
-  background-color: white;
-}
-.rechercher:hover {
-  background-color: #e5e5e5;
-  border-radius: 99px;
-}
-.ri-search-line {
-  background-color: white;
-  border-radius: 99px;
 }
 .ri-search-line:hover {
   background-color: #cacacb;
 }
-
+.nav2 {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
 .nav2 i {
   padding: 10px;
 }
-
 .nav2 i:hover {
   border-radius: 99px;
   background-color: #e5e5e5;
@@ -419,11 +390,15 @@ nav {
   font-weight: bold;
   color: black;
 }
+#closeSearch:hover {
+  color: #919090;
+  transition: 0.3s ease;
+}
 
 .search-suggestions p {
   font-size: 13px;
   color: #555;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }
 
 .tags {
@@ -445,8 +420,6 @@ nav {
 .tags span:hover {
   background-color: #e2e2e2;
 }
-
-
 
 /* .partie menu burger */
 
