@@ -35,13 +35,14 @@
         <span class="spark spark-one">✦</span><span class="spark spark-two">✧</span><span class="spark spark-three">✦</span>
         <div class="envelope">
           <div class="envelope-back"></div>
-          <div class="envelope-note"></div>
+          <div class="envelope-note"><span class="note-star">✦</span><span class="note-to">Pour Alice</span></div>
           <div class="envelope-front"></div>
           <div class="envelope-flap"></div>
           <span class="seal">♡</span>
         </div>
+        <canvas class="opening-light" aria-hidden="true" hidden></canvas>
       </div>
-      <a class="button open-button" id="open-letter" href="#lettre"><span aria-hidden="true">✦</span> Ouvrir mon cadeau</a>
+      <a class="button open-button" id="open-letter" href="#lettre"><span aria-hidden="true">✦</span> <span class="open-label">Ouvrir mon cadeau</span></a>
     </section>
 
     <div id="lettre" class="story">
@@ -57,10 +58,12 @@
         <article class="letter-paper" tabindex="-1" id="letter-paper">
           <p class="letter-kicker">Un mot pour toi</p>
           <h2 id="letter-title">Alice,</h2>
-          <p>Je repense à ce jour où on s’est rencontrés dehors. Sur le moment, j’aurais jamais imaginé que j’allais autant aimer parler avec toi.</p>
-          <p>Tu me fais rire pour de vrai. Et même quand on se raconte n’importe quoi par message, j’ai toujours envie que la conversation dure un peu plus longtemps.</p>
-          <p>J’avais envie de te dire un truc sans faire le malin, pour une fois. Je te trouve vraiment formidable, Alice. Et je suis trop content de t’avoir rencontrée.</p>
-          <p class="signoff">J’espère que ça t’a fait sourire. <span aria-label="cœur">♡</span></p>
+          <p>Quand on s’est rencontrés dehors, je me doutais pas que j’allais autant aimer parler avec toi. Maintenant, quand je vois ton prénom s’afficher sur mon tél, ça me fait sourire avant même que j’aie lu ton message.</p>
+          <p>J’aime trop quand on part sur un truc complètement débile et qu’on en rigole pendant des messages et des messages. Et quand je dois poser mon tél au milieu d’une conversation avec toi, j’ai souvent envie de t’envoyer encore un dernier truc. Bon, des fois, le dernier truc en devient trois.</p>
+          <p>J’ai déjà fait le malin avec Lucia, alors je te le dis sérieusement ici. Tu me plais, Alice. T’es drôle, j’aime bien ta façon d’être et je suis vraiment content qu’on se soit croisés ce jour-là. J’avais envie que tu le saches, même si je suis plus à l’aise pour te taquiner que pour t’écrire ça.</p>
+          <p>Je t’avais dit que je te ferais un cadeau. J’aurais pu t’envoyer un message et voilà. Puis j’ai commencé à faire un site, j’ai rajouté des étoiles, et à un moment je me suis dit « eh, il manque PNL ». Donc voilà où on en est.</p>
+          <p class="signoff">J’espère que ça t’a fait sourire. Moi, rien que de t’imaginer en train de lire ça, ça me fait sourire aussi. <span aria-label="cœur">♡</span></p>
+          <p class="letter-ps"><strong>P.-S.</strong> T’es une personne incroyable qui kiffe des trucs incroyables, genre PNL. Si ça c’est pas incroyable… Bon, j’ai dit « incroyable » trois fois. J’avais trouvé « formidable » aussi, mais je te le garde pour la prochaine lettre.</p>
         </article>
       </section>
       <section class="finale-invite" aria-labelledby="finale-title">
@@ -73,6 +76,19 @@
       </section>
     </div>
   </main>
+
+  <dialog class="gift-intro" id="gift-intro" aria-labelledby="gift-intro-title">
+    <div class="gift-intro-content">
+      <button class="gift-intro-skip" id="skip-intro" type="button" autofocus>Passer</button>
+      <div class="gift-intro-orbit" aria-hidden="true">
+        <span class="intro-ring"></span><span class="intro-ring"></span><span class="intro-ring"></span>
+        <span class="intro-heart">♡</span>
+      </div>
+      <h2 id="gift-intro-title">Préparation du cadeau pour <em>Alice</em></h2>
+      <div class="gift-intro-bar" aria-hidden="true"><span></span></div>
+    </div>
+  </dialog>
+
 
   <dialog class="sky" id="sky" aria-label="Un ciel pour Alice">
     <div class="sky-stage">
@@ -89,6 +105,5 @@
       </div>
     </div>
   </dialog>
-  <div class="celebration" aria-hidden="true"></div>
 </body>
 </html>
