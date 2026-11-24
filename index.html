@@ -1,209 +1,94 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#111128" />
-  <title>Mission Elena ✨</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap');
-    :root{--bg:#0e0e22;--card:#1b1a39;--txt:#fff;--muted:#c1bdda;--pink:#ff72bd;--violet:#9979ff;--mint:#8bffdb}
-    *{box-sizing:border-box} html{scroll-behavior:smooth}
-    body{margin:0;color:var(--txt);font-family:'DM Sans',system-ui,sans-serif;min-height:100vh;background:radial-gradient(ellipse at 10% 10%,#3f236a 0,transparent 35%),radial-gradient(ellipse at 90% 40%,#203d6d 0,transparent 42%),var(--bg);overflow-x:hidden}
-    .ambient{position:fixed;inset:0;pointer-events:none;z-index:-1;background-image:radial-gradient(#ffffff30 1px,transparent 1px);background-size:28px 28px;mask-image:linear-gradient(black,transparent 80%)}
-    .wrap{width:min(100% - 34px,860px);margin:auto;padding:28px 0 70px}
-    nav{display:flex;align-items:center;justify-content:space-between;gap:12px}.brand{font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spacing:-.5px;font-size:20px}.brand span{color:var(--pink)}.pill{border:1px solid #ffffff36;border-radius:50px;padding:9px 15px;font-size:12px;color:#eee6ff;background:#ffffff0a}
-    .hero{text-align:center;padding:75px 0 34px}.tiny{font-size:12px;text-transform:uppercase;letter-spacing:3px;font-weight:800;color:var(--mint)}
-    h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(52px,10vw,104px);line-height:.99;letter-spacing:-5px;margin:20px 0 18px}.gradient{background:linear-gradient(95deg,#ff87c5,#b497ff,#8bffdb);color:transparent;background-clip:text;-webkit-background-clip:text}
-    .subtitle{color:var(--muted);max-width:530px;margin:0 auto;font-size:17px;line-height:1.75}.float{font-size:47px;display:inline-block;animation:bob 3s ease-in-out infinite}@keyframes bob{50%{transform:translateY(-12px) rotate(8deg)}}
-    .status{display:inline-flex;align-items:center;gap:8px;background:#ffffff12;border:1px solid #ffffff1c;padding:10px 15px;border-radius:50px;margin-top:24px;font-size:13px}.dot{width:8px;height:8px;border-radius:50%;background:#83f4b9;box-shadow:0 0 12px #83f4b9}
-    .panel{background:linear-gradient(140deg,#252347e8,#17172fe8);border:1px solid #ffffff25;border-radius:28px;padding:32px;box-shadow:0 30px 80px #0000002b;position:relative;overflow:hidden}
-    .panel:before{content:'✦';position:absolute;right:25px;top:6px;font-size:95px;opacity:.055;pointer-events:none}
-    .panel h2{font-family:'Space Grotesk',sans-serif;font-size:clamp(24px,5vw,34px);letter-spacing:-1px;margin:0 0 10px}.panel p{color:var(--muted);line-height:1.6;margin:0}.btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:25px}
-    button{border:none;border-radius:14px;padding:14px 21px;font:800 14px 'DM Sans',sans-serif;cursor:pointer;transition:transform .15s,box-shadow .2s}button:hover{transform:translateY(-3px)}button:active{transform:scale(.97)}button:focus-visible{outline:3px solid var(--mint);outline-offset:3px}.primary{background:linear-gradient(110deg,#ff75b8,#bb89ff);color:#17112f;box-shadow:0 8px 25px #ed74cc30}.secondary{background:#ffffff14;border:1px solid #ffffff35;color:white}
-    #message{margin-top:20px;min-height:68px;display:flex;align-items:center;border-radius:14px;padding:15px 18px;background:#ffffff0d;border:1px dashed #ffffff3b;color:#fff;font-weight:700;line-height:1.5}#message.pop{animation:pop .32s ease}@keyframes pop{0%{transform:scale(.97);opacity:.3}100%{transform:scale(1);opacity:1}}
-    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin:19px 0}.mini{background:#ffffff0c;border:1px solid #ffffff22;border-radius:22px;padding:24px 20px;min-height:166px}.mini .emoji{font-size:32px}.mini h3{font-size:17px;margin:13px 0 8px}.mini p{font-size:13px;line-height:1.6;color:var(--muted);margin:0}
-    .meter{margin:22px 0 0}.meter-head{display:flex;justify-content:space-between;gap:8px;font-size:13px;margin-bottom:11px;color:#d7d0ed}.track{background:#ffffff17;border-radius:50px;height:16px;overflow:hidden}.fill{width:12%;height:100%;background:linear-gradient(90deg,#ff72bd,#a78aff,#8bffdb);border-radius:50px;transition:width .65s cubic-bezier(.22,1,.36,1)}.tip{font-size:12px;color:#b4adcf;margin-top:11px}
-    .hero{position:relative}.hero:after{content:'✦';position:absolute;right:8%;top:21%;font-size:24px;color:#ffc4e2;animation:bob 4s ease-in-out infinite}.hero:before{content:'✳';position:absolute;left:7%;top:33%;font-size:20px;color:#a8ffdc;opacity:.8}
-    .hero-chips{display:flex;gap:9px;justify-content:center;flex-wrap:wrap;margin:21px 0 7px}.hero-chips span{border:1px solid #ffffff2e;background:#ffffff0c;border-radius:99px;padding:8px 12px;color:#e8e1ff;font-size:12px;font-weight:700}
-    .prompt-card{margin-top:23px;border:1px solid #ffffff24;border-radius:20px;background:linear-gradient(115deg,#ffffff12,#ffffff07);padding:18px;display:flex;gap:14px;align-items:center;text-align:left}.prompt-avatar{width:46px;height:46px;flex-shrink:0;border-radius:14px;background:linear-gradient(140deg,#ff9ad0,#9a8cff);display:grid;place-items:center;font-size:25px}.prompt-card strong{display:block;font-size:14px}.prompt-card small{display:block;color:var(--muted);font-size:12px;margin-top:5px;line-height:1.5}
-    .action-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin-top:21px}.action{position:relative;text-align:left;padding:19px 19px 17px;min-height:124px;border-radius:20px;display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;gap:15px;box-shadow:none}.action .action-top{display:flex;align-items:center;justify-content:space-between;width:100%}.action .action-emoji{font-size:30px}.action .action-arrow{font-size:20px;opacity:.8}.action strong{font-family:'Space Grotesk',sans-serif;font-size:19px;letter-spacing:-.3px}.action small{display:block;font-size:12px;font-weight:600;opacity:.78;margin-top:4px}.action-joke{background:linear-gradient(135deg,#ff8bba,#ffc0a0);color:#30112d}.action-kind{background:linear-gradient(135deg,#a78fff,#85e6de);color:#181531}
-    .result-header{display:flex;gap:8px;align-items:center;font-size:11px;letter-spacing:1.8px;color:#c2b7e7;text-transform:uppercase;font-weight:800;margin-bottom:10px}.result-header .dot{width:6px;height:6px}
-    #message{margin-top:15px;min-height:116px;display:block;border:1px solid #ffffff25;padding:22px 21px;background:linear-gradient(120deg,#ffffff11,#ffffff06);font-size:clamp(16px,3vw,20px);font-family:'Space Grotesk',sans-serif;line-height:1.5;letter-spacing:-.3px}
-    #message .result-text{display:block}.result-meta{display:block;margin-top:12px;font:600 12px 'DM Sans',sans-serif;color:#c1bdda;letter-spacing:0}
-    .reply-row{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-top:13px;color:#bfb4da;font-size:12px}.small-btn{font-size:12px;padding:9px 12px;color:#efe9ff;background:#ffffff14;border:1px solid #ffffff22;border-radius:11px}
-    .footer{text-align:center;color:#b3aacd;font-size:13px;margin-top:36px;line-height:1.8}.footer strong{color:white}.confetti{position:fixed;top:-30px;pointer-events:none;z-index:20;animation:fall var(--dur) linear forwards;transform:rotate(var(--rot));font-size:var(--size)}@keyframes fall{to{transform:translate(var(--drift),110vh) rotate(850deg);opacity:0}}
-
-    /* Lecteur musical compact */
-    .music-player{display:flex;align-items:center;gap:14px;margin:0 0 22px;padding:15px 18px;border:1px solid #ffffff30;border-radius:20px;background:linear-gradient(115deg,#382b60cc,#202444cc);box-shadow:0 12px 38px #00000027}
-    .music-art{width:52px;height:52px;flex-shrink:0;display:grid;place-items:center;border-radius:14px;background:linear-gradient(135deg,#ff8bc8,#aa87ff);font-size:26px;box-shadow:0 6px 20px #b05cff38}
-    .music-details{flex:1;min-width:0}.music-details strong{display:block;font-family:'Space Grotesk',sans-serif;font-size:15px}.music-details small{display:block;color:#d0c6e9;font-size:12px;line-height:1.45;margin-top:4px}
-    .music-toggle{display:inline-flex;align-items:center;justify-content:center;gap:7px;flex-shrink:0;padding:11px 15px;border-radius:13px;background:linear-gradient(110deg,#ff82bc,#c49aff);color:#251135;font-size:13px;min-width:116px}
-    .music-toggle:disabled{opacity:.65;cursor:wait}.music-icon{font-size:15px}.music-player.playing .music-art{animation:music-pulse 2.2s ease-in-out infinite}@keyframes music-pulse{50%{box-shadow:0 0 25px #ba8aff99;transform:scale(1.035)}}
-    @media(max-width:460px){.music-player{gap:10px;padding:12px}.music-art{width:44px;height:44px;font-size:22px}.music-toggle{min-width:96px;padding:11px 10px;font-size:12px}.music-details strong{font-size:13px}.music-details small{font-size:11px}}
-    @media(max-width:650px){.wrap{width:min(100% - 26px,860px)}.hero{padding-top:62px}h1{letter-spacing:-2.8px}.panel{padding:25px 21px}.cards{grid-template-columns:1fr}.mini{min-height:0}.btns button{flex:1 1 180px}.action-grid{grid-template-columns:1fr}.action{min-height:110px}.prompt-card{margin-top:18px}.hero:after{right:0}.hero:before{left:0}.pill{font-size:10px}.subtitle{font-size:15px}}
-    @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
-  </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#180f16">
+  <meta name="description" content="Une petite surprise, juste pour toi.">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Pour Alice ♡</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+  <script src="finale.js" defer></script>
 </head>
 <body>
-  <div class="ambient" aria-hidden="true"></div>
-  <main class="wrap">
-    <nav><div class="brand">mission<span>elena.</span> ✨</div><div class="pill">🇦🇱 ÉDITION SPÉCIALE</div></nav>
-    <header class="hero">
-      <div class="float" aria-hidden="true">💌</div>
-      <div class="tiny">Message prioritaire • juste pour toi</div>
-      <h1>ELENA, <span class="gradient">2 MINUTES.</span></h1>
-      <p class="subtitle">Oui, j'ai vraiment fait un site pour toi. Non, j'ai pas perdu un pari. J'me suis juste dit qu'un petit sourire, ça se tente. 😭</p>
-      <div class="hero-chips"><span>🎮 Rencontre sur Roblox</span><span>🇦🇱 Shqiptar edition</span><span>💜 0 prise de tête</span></div>
-      <div class="status"><span class="dot"></span> Mission : te changer les idées</div>
-    </header>
-    <section class="music-player" id="musicPlayer" aria-label="Lecteur de musique">
-      <div class="music-art" aria-hidden="true">🎵</div>
-      <div class="music-details"><strong>La bande-son d'Elena 🎧</strong><small id="musicStatus" role="status">Clique sur Lecture pour l'ambiance ✨</small></div>
-      <button class="music-toggle" id="musicToggle" type="button" aria-label="Lancer la musique" aria-pressed="false"><span class="music-icon" id="musicIcon" aria-hidden="true">▶</span><span id="musicLabel">Lecture</span></button>
-      <audio id="elenaAudio" preload="metadata" src="ninho.mp4"></audio>
-    </section>
-    <section class="panel" aria-label="Messages pour Elena">
-      <h2>Bon, on tente quoi ? 👀</h2>
-      <p>Deux options. L'une est censée te faire rire. L'autre est juste là pour te rappeler que t'as un pote.</p>
-      <div class="prompt-card"><div class="prompt-avatar">🕹️</div><div><strong>Invitation officielle d'un pote un peu trop motivé</strong><small>Choisis ton mode. Tu peux cliquer autant de fois que tu veux, les messages changent.</small></div></div>
-      <div class="action-grid">
-        <button class="action action-joke" id="jokeBtn" type="button"><span class="action-top"><span class="action-emoji">😂</span><span class="action-arrow">↗</span></span><span><strong>Vas-y, fais-moi rire</strong><small>Humour débile certifié (presque)</small></span></button>
-        <button class="action action-kind" id="kindBtn" type="button"><span class="action-top"><span class="action-emoji">💜</span><span class="action-arrow">↗</span></span><span><strong>Dis un truc sympa</strong><small>Sans discours gênant, promis</small></span></button>
+  <header class="topbar">
+    <a class="mark" href="#accueil" aria-label="Pour Alice, accueil"><span aria-hidden="true">♡</span> Pour Alice</a>
+    <button class="sound" type="button" id="sound" aria-pressed="false" hidden>
+      <span class="equalizer" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      <span id="sound-label">Écouter PNL</span>
+    </button>
+    <p class="sound-status" id="sound-status" role="status"></p>
+  </header>
+  <audio id="track" src="audd.mp3" preload="none" loop></audio>
+  <main id="accueil">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="starfield" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span><span></span>
       </div>
-      <div id="message" role="status" aria-live="polite"><span class="result-header"><span class="dot"></span> Message en attente</span><span class="result-text">À toi de choisir, Elena. Moi, j'ai déjà donné en codant tout ça. 💀</span><span class="result-meta">PS : le bouton ne vole pas tes Robux.</span></div>
-      <div class="reply-row"><span id="messageCount">0 message ouvert • 0 pression</span><button id="againBtn" class="small-btn" type="button" hidden>🔄 Encore un</button></div>
-      <div class="meter"><div class="meter-head"><span>Indice de bonne humeur (absolument pas officiel)</span><strong id="percent">12 %</strong></div><div class="track" role="progressbar" aria-label="Jauge de bonne humeur fictive" aria-valuemin="0" aria-valuemax="100" aria-valuenow="12" id="progress"><div class="fill" id="fill"></div></div><div class="tip">* Chiffres inventés. Site fait avec de vraies bonnes intentions.</div></div>
+      <p class="eyebrow"><span></span> Une surprise pour toi <span></span></p>
+      <h1 id="hero-title">Alice<span>.</span></h1>
+      <p class="hero-copy">Je t’avais promis un cadeau.</p>
+      <div class="envelope-scene" aria-hidden="true">
+        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+        <span class="spark spark-one">✦</span><span class="spark spark-two">✧</span><span class="spark spark-three">✦</span>
+        <div class="envelope">
+          <div class="envelope-back"></div>
+          <div class="envelope-note"></div>
+          <div class="envelope-front"></div>
+          <div class="envelope-flap"></div>
+          <span class="seal">♡</span>
+        </div>
+      </div>
+      <a class="button open-button" id="open-letter" href="#lettre"><span aria-hidden="true">✦</span> Ouvrir mon cadeau</a>
     </section>
-    <section class="cards" aria-label="Trois messages pour Elena">
-      <div class="mini"><div class="emoji">🎮</div><h3>Roblox certified</h3><p>On s'est croisés sur Roblox. Le hasard a clairement lancé une partie bizarre.</p></div>
-      <div class="mini"><div class="emoji">🇦🇱</div><h3>Shqiptar energy</h3><p>Na shqiptarët duhet me kon t'lumtur ! Même les jours où tout est nul.</p></div>
-      <div class="mini"><div class="emoji">🌤️</div><h3>Zéro pression</h3><p>T'as pas besoin de faire semblant d'aller bien. Ce site est juste là pour te changer les idées.</p></div>
-    </section>
-    <section class="panel">
-      <h2>Un dernier truc, Elena 💜</h2>
-      <p>Je sais pas toujours ce qui te tracasse, mais si t'as besoin de parler, de rigoler ou juste de jouer tranquille, je suis là. Et oui, j'ai vraiment fait un site pour dire ça. C'est peut-être un peu abusé. 😭</p>
-      <div class="btns"><button class="primary" id="surpriseBtn">🎉 Activer la surprise finale</button></div>
-      <div id="finalMsg" role="status" aria-live="polite" hidden style="margin-top:18px;font-weight:800;font-size:20px;color:#a8ffde">URIME ELENA! 🇦🇱✨ Mission accomplie si t'as souri ne serait-ce qu'une seconde !</div>
-    </section>
-    <footer class="footer">Fait avec un peu de code, beaucoup de second degré et zéro Robux.<br><strong>De la part de ton pote 😎</strong></footer>
-  </main>
-  <script>
 
-    // Le fichier ninho.mp4 doit être dans le même dossier que ce HTML.
-    // On ignore les 23 premières secondes (intro musicale) à chaque lecture complète.
-    const audio = document.getElementById('elenaAudio');
-    const musicPlayer = document.getElementById('musicPlayer');
-    const musicToggle = document.getElementById('musicToggle');
-    const musicLabel = document.getElementById('musicLabel');
-    const musicIcon = document.getElementById('musicIcon');
-    const musicStatus = document.getElementById('musicStatus');
-    const startAt = 23;
-    function startPosition(){return Number.isFinite(audio.duration) && audio.duration > startAt ? startAt : 0;}
-    function skipIntro(){
-      const at = startPosition();
-      if (Math.abs(audio.currentTime - at) > 0.5) audio.currentTime = at;
-    }
-    function syncMusicUI(){
-      const playing = !audio.paused && !audio.ended;
-      musicPlayer.classList.toggle('playing', playing);
-      musicLabel.textContent = playing ? 'Pause' : 'Lecture';
-      musicIcon.textContent = playing ? '❚❚' : '▶';
-      musicToggle.setAttribute('aria-label', playing ? 'Mettre la musique en pause' : 'Lancer la musique');
-      musicToggle.setAttribute('aria-pressed', String(playing));
-      if (playing) musicStatus.textContent = 'Musique en cours 🎶';
-      else if (!audio.error) musicStatus.textContent = 'Musique en pause • à toi de jouer';
-    }
-    audio.addEventListener('loadedmetadata', () => {
-      // Le premier lancement commence à 00:23, pas à 00:00.
-      if (audio.currentTime < startAt) skipIntro();
-    });
-    musicToggle.addEventListener('click', async () => {
-      if (!audio.paused){audio.pause();return;}
-      musicToggle.disabled = true;
-      musicStatus.textContent = 'Chargement du son…';
-      try {
-        if (audio.readyState < 1) {
-          await new Promise((resolve, reject) => {
-            const onReady = () => {cleanup();resolve();};
-            const onError = () => {cleanup();reject(new Error('audio indisponible'));};
-            const cleanup = () => {audio.removeEventListener('loadedmetadata',onReady);audio.removeEventListener('error',onError);};
-            audio.addEventListener('loadedmetadata',onReady);
-            audio.addEventListener('error',onError);
-            if (audio.error) onError();
-            else audio.load();
-          });
-        }
-        if (audio.ended || audio.currentTime < startAt) skipIntro();
-        await audio.play();
-      } catch (error) {
-        musicStatus.textContent = 'Impossible de lire le son : vérifie ninho.mp4';
-      } finally {musicToggle.disabled = false;syncMusicUI();if(audio.error)musicStatus.textContent='Fichier ninho.mp4 introuvable ou illisible';}
-    });
-    audio.addEventListener('play', syncMusicUI);
-    audio.addEventListener('pause', syncMusicUI);
-    audio.addEventListener('ended', () => { skipIntro(); audio.play().catch(() => {musicStatus.textContent='Clique sur Lecture pour reprendre';}); });
-    audio.addEventListener('error', () => {syncMusicUI();musicStatus.textContent='Fichier ninho.mp4 introuvable ou illisible';});
-    const jokes = [
-      "On s'est rencontrés sur Roblox. Y a des milliards de joueurs, et le jeu a décidé de nous mettre dans le même serveur… faut enquêter. 😭",
-      "J'ai fait un site rien que pour toi. Si tu rigoles pas, je vais devoir ouvrir un ticket au service client de l'humour. 💀",
-      "Mon clavier réclame des heures sup. Je lui ai dit : « c'est pour Elena ». Il a demandé un remboursement. ⌨️",
-      "Si ce site plante, dis-toi que c'est un effet spécial. On appelle ça le budget cinéma. 🎬",
-      "J'ai hésité à t'offrir des Robux. Puis j'ai regardé mon compte et j'ai préféré t'offrir du HTML. 😭",
-      "Ce message a été approuvé par le ministère très officiel des gens qui racontent n'importe quoi. ✅",
-      "J'ai demandé à Roblox comment faire sourire Elena. Ils m'ont répondu : « Erreur 404, débrouille-toi ». 😭",
-      "Je voulais faire une blague incroyable, mais elle est partie AFK. Du coup, tu te contentes de celle-là. 🎮",
-      "Tu sais ce qui est plus rare qu'un item légendaire sur Roblox ? Moi qui termine un projet juste pour faire une blague. 💀",
-      "J'ai codé un bouton « fais-moi rire ». La confiance est énorme. Le niveau de risque aussi. 😂",
-      "Je comptais faire un site sérieux. Puis je me suis souvenu qu'on s'était rencontrés sur Roblox. Impossible. 😭",
-      "Si tu souris ne serait-ce qu'une seconde, je considère que ce site a une meilleure rentabilité que tous mes investissements en Robux. 📈"
-    ];
-    const kindness = [
-      "T'as le droit d'avoir une journée nulle. J'espère juste que la suite sera un peu plus douce pour toi. 💜",
-      "Je te connais peut-être surtout à travers Roblox, mais ça m'empêche pas de vouloir que tu ailles bien. 🎮",
-      "T'es pas obligée de faire semblant d'être de bonne humeur avec moi. On peut aussi juste jouer et raconter n'importe quoi. 🤝",
-      "Même si j'ai parfois des blagues nulles, au moins tu sais que je suis là si t'as besoin de parler. 💜",
-      "J'espère que ce petit site t'a changé les idées, même cinq secondes. C'est déjà une victoire pour mon code. ✨",
-      "Nuk ki nevojë me qenë gjithmonë mirë. 💜 Ça veut dire : t'as pas besoin d'aller bien tout le temps.",
-      "Si quelque chose te tracasse, tu peux m'en parler. Et si t'as pas envie, on peut juste faire une partie tranquille. 🌷",
-      "On n'a pas besoin d'avoir une grande raison pour faire un petit geste gentil. Voilà, c'était ma philosophie du jour. 😭",
-      "Je sais pas forcément comment améliorer ta journée, mais j'avais envie d'essayer. Et promis, pas de facture pour ce site. 💌",
-      "Peu importe ton humeur aujourd'hui, t'es toujours la bienvenue pour discuter ou jouer. Sans pression. 🌤️"
-    ];
-    const message = document.getElementById('message');
-    const fill = document.getElementById('fill');
-    const percent = document.getElementById('percent');
-    const progress = document.getElementById('progress');
-    const againBtn = document.getElementById('againBtn');
-    let score = 12, lastMode = 'joke', shownCount = 0;
-    const queues = {joke: [], kind: []};
-    function nextFrom(mode){
-      const pool = mode === 'joke' ? jokes : kindness;
-      if(!queues[mode].length){
-        const indices = pool.map((_,i)=>i);
-        for(let i=indices.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[indices[i],indices[j]]=[indices[j],indices[i]];}
-        queues[mode]=indices;
-      }
-      return pool[queues[mode].pop()];
-    }
-    function show(mode){
-      lastMode=mode;shownCount++;
-      const isJoke=mode==='joke';
-      message.classList.remove('pop');void message.offsetWidth;
-      message.replaceChildren();
-      const heading=document.createElement('span');heading.className='result-header';heading.textContent=isJoke?'😂 OPÉRATION SOURIRE':'💜 PETIT MESSAGE POUR TOI';
-      const body=document.createElement('span');body.className='result-text';body.textContent=nextFrom(mode);
-      const hint=document.createElement('span');hint.className='result-meta';hint.textContent=isJoke?'Si tu rigoles, c’est gagné. Sinon, je demande le remboursement du site.':'Aucune obligation de sourire. C’est juste un message de ton pote.';
-      message.append(heading,body,hint);message.classList.add('pop');
-      score=Math.min(99,score+(isJoke?11:9));fill.style.width=score+'%';percent.textContent=score+' %';progress.setAttribute('aria-valuenow',String(score));
-      document.getElementById('messageCount').textContent=shownCount+' message'+(shownCount>1?'s':'')+' ouvert'+(shownCount>1?'s':'')+' • toujours 0 pression';
-      againBtn.hidden=false;againBtn.textContent=isJoke?'😂 Une autre blague':'💜 Un autre message';
-    }
-    document.getElementById('jokeBtn').addEventListener('click',()=>show('joke'));
-    document.getElementById('kindBtn').addEventListener('click',()=>show('kind'));
-    againBtn.addEventListener('click',()=>show(lastMode));
-    document.getElementById('surpriseBtn').addEventListener('click',()=>{document.getElementById('finalMsg').hidden=false;score=100;fill.style.width='100%';percent.textContent='100 %';progress.setAttribute('aria-valuenow','100');burst();});
-    function burst(){if(window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;const icons=['✨','💜','🎉','🌸','🇦🇱','⭐'];for(let i=0;i<55;i++){const el=document.createElement('span');el.className='confetti';el.textContent=icons[Math.floor(Math.random()*icons.length)];el.style.left=Math.random()*100+'vw';el.style.setProperty('--dur',2.4+Math.random()*2.6+'s');el.style.setProperty('--drift',(Math.random()*220-110)+'px');el.style.setProperty('--rot',Math.random()*360+'deg');el.style.setProperty('--size',14+Math.random()*16+'px');el.style.animationDelay=Math.random()*.45+'s';document.body.appendChild(el);setTimeout(()=>el.remove(),5600)}}
-  </script>
+    <div id="lettre" class="story">
+      <section class="wink" aria-labelledby="wink-title">
+        <p class="eyebrow"><span></span> La blague <span></span></p>
+        <h2 id="wink-title">Et pour Lucia…</h2>
+        <p>Quand je te disais que je préférais Lucia, je faisais le malin juste pour te taquiner.</p>
+        <p class="punchline">Je te préfère <em>largement.</em></p>
+        <p>T’es plus, plus, plus drôle. Et puis surtout, c’est avec toi que j’ai envie de parler.</p>
+      </section>
+
+      <section class="letter-stage" id="mot" aria-labelledby="letter-title">
+        <article class="letter-paper" tabindex="-1" id="letter-paper">
+          <p class="letter-kicker">Un mot pour toi</p>
+          <h2 id="letter-title">Alice,</h2>
+          <p>Je repense à ce jour où on s’est rencontrés dehors. Sur le moment, j’aurais jamais imaginé que j’allais autant aimer parler avec toi.</p>
+          <p>Tu me fais rire pour de vrai. Et même quand on se raconte n’importe quoi par message, j’ai toujours envie que la conversation dure un peu plus longtemps.</p>
+          <p>J’avais envie de te dire un truc sans faire le malin, pour une fois. Je te trouve vraiment formidable, Alice. Et je suis trop content de t’avoir rencontrée.</p>
+          <p class="signoff">J’espère que ça t’a fait sourire. <span aria-label="cœur">♡</span></p>
+        </article>
+      </section>
+      <section class="finale-invite" aria-labelledby="finale-title">
+        <p class="eyebrow"><span></span> Juste avant que tu partes <span></span></p>
+        <h2 id="finale-title">Attends, Alice…</h2>
+        <p>Il reste un truc que je voulais te montrer.</p>
+        <div class="finale-orb" aria-hidden="true">✦</div>
+        <button class="button sky-button" id="launch-sky" type="button" hidden><span aria-hidden="true">✧</span> Allumer le ciel</button>
+        <noscript><p>Si je pouvais rallumer les étoiles, j’en ferais un ciel pour toi. ♡</p></noscript>
+      </section>
+    </div>
+  </main>
+
+  <dialog class="sky" id="sky" aria-label="Un ciel pour Alice">
+    <div class="sky-stage">
+      <div class="sky-controls">
+        <form method="dialog"><button class="sky-small-button" id="close-sky" autofocus>Fermer</button></form>
+      </div>
+      <div class="sky-art">
+        <canvas class="sky-canvas" aria-hidden="true"></canvas>
+        <p class="sky-name" hidden>ALICE</p>
+      </div>
+      <div class="sky-words">
+        <p id="sky-message" aria-live="polite"></p>
+        <button class="sky-small-button" id="replay-sky" type="button" hidden>Revoir les étoiles</button>
+      </div>
+    </div>
+  </dialog>
+  <div class="celebration" aria-hidden="true"></div>
 </body>
 </html>
